@@ -15,9 +15,15 @@ export default function App() {
   const [taskItem, setTaskItem] = useState([]);
 
   const handleAddTask = () => {
-    Keyboard.dismiss()
+    Keyboard.dismiss();
     setTaskItem([...taskItem, task]);
     setTask(null);
+  };
+
+  const completeTask = (index) => {
+    let itemsCopy = [...taskItem];
+    itemsCopy.splice(index, 1);
+    setTaskItem(itemsCopy);
   };
   return (
     <View style={styles.container}>
@@ -25,9 +31,10 @@ export default function App() {
         <Text style={styles.sectionTitle}>Today's tasks</Text>
 
         <View style={styles.items}>
-          {/* This is where the task will go */}
           {taskItem.map((item, index) => (
-            <Task text={item} key={index} />
+            <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+              <Task text={item} />
+            </TouchableOpacity>
           ))}
         </View>
       </View>
