@@ -3,14 +3,15 @@ import Task from "./components/Task";
 
 export default function App() {
   return (
-    <View style={styles.Container}> 
+    <View style={styles.container}>
       <View style={styles.tasksWrapper}>
         <Text style={styles.sectionTitle}>Today's tasks</Text>
 
         <View style={styles.items}>
           {/* This is where the task will go */}
-          <Task />
-          </View>
+          <Task text="text" />
+          <Task text="text" />
+        </View>
       </View>
     </View>
   );
@@ -27,6 +28,9 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: "bold",
+  },
+  items: {
+    marginTop: 30,
   },
 });
